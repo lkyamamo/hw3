@@ -14,12 +14,10 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot){
         smaller = head;
         head = head->next;
         llpivot(head, smaller -> next, larger, pivot);
-        //head = nullptr;
     }
     else{
         larger = head;
         head = head -> next;
         llpivot(head, smaller, larger -> next, pivot);
-        //head = nullptr;
     }
 }
