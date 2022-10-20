@@ -111,7 +111,7 @@ void Heap<T,PComparator>::pop()
   list[0] = list[list.size() - 1];
   list.pop_back();
   //trickle down
-  size_t i = list.size() - 1;
+  size_t i = 0;
   while(i < list.size()){
     //if no child stop
     if((m_*i) + 1 >= list.size())
@@ -126,7 +126,7 @@ void Heap<T,PComparator>::pop()
     
     size_t j = 2;
     //iterate over all children to find best child
-    while((m_*i) + j < list.size() && j <= m_)
+    while(((m_*i) + j < list.size()) && (j <= m_))
     {
       //if next child better than best child
       if(c_(list[(m_*i) + j], list[child]))
@@ -142,8 +142,8 @@ void Heap<T,PComparator>::pop()
     {
       //swap
       T temp = list[i];
-      list[i] = list[(i-1)/m_];
-      list[(i-1)/m_] = temp;
+      list[i] = list[child];
+      list[child] = temp;
     }else{
       break;
     }
